@@ -1,9 +1,25 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <dvi>
+    <div class="header">
+      <span class="go-back" @click="goBack()">返回</span>
+    </div>
+    <div>
+      <nuxt/>
+    </div>
+  </dvi>
 </template>
 
+
+<script>
+  export default {
+    methods: {
+      goBack() {
+        console.log('goback');
+        history.go(-1);
+      },
+    },
+  };
+</script>
 <style>
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -20,7 +36,17 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
+.header {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: #1c8bd0;
+  text-indent: 10px;
+}
+.go-back {
+  color: #f7f8fb;
+  font: 20px;
+}
 .button--green {
   display: inline-block;
   border-radius: 4px;

@@ -35,5 +35,12 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  proxy: [
+    ['/v2', { target: 'https://api.douban.com' }]
+  ]
 }

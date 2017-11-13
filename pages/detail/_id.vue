@@ -1,26 +1,27 @@
 <template>
-  <section class="container">
-    我是电影详情页 {{id}}
+  <section>
+    我是电影详情页
+    <h2>电影名称:{{movie.title}}</h2>
+    <div>地区:{{movie.countries}}</div>
+    <div>电影类型:{{movie.genres}}</div>
+    <!--<div><img :src="movie.images.large" alt=""></div>-->
+    <p>电影概要:{{movie.summary}}</p>
   </section>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VueRouter from 'vue-router'
-  import axios from 'axios'
-  Vue.use(VueRouter)
-  export default {
-    asyncData ({ params }) {
-      return axios.get(`https://api.douban.com/v2/movie/subject/1764796`)
-        .then((res) => {
-          console.log(res)
-          return { id: res.data.id }
-        })
-    },
-    methods: {
+import axios from 'axios';
+export default {
+  asyncData({params}) {
+    return axios.get(`http://localhost:3000/v2/movie/subject/${params.id}`)
+      .then((res) => {
+        return {movie: res.data};
+      });
+  },
+  methods: {
 
-    }
-  }
+  },
+};
 </script>
 
 
